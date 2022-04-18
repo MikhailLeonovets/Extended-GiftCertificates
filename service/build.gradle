@@ -1,4 +1,6 @@
-
+plugins {
+    id 'esm.java-library-conventions'
+}
 
 dependencies {
     implementation project(':repository')

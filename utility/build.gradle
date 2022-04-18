@@ -1,4 +1,6 @@
-
+plugins {
+    id 'esm.java-library-conventions'
+}
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
