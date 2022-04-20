@@ -1,4 +1,4 @@
-package com.itechart.esm.common.model.exception;
+package com.itechart.esm.common.exception;
 
 public class UserRoleNotFoundException extends Exception {
 }
