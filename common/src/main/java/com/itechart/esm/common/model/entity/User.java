@@ -1,5 +1,7 @@
 package com.itechart.esm.common.model.entity;
 
+import com.itechart.esm.common.model.enumeration.UserRole;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -7,6 +9,7 @@ public class User implements Serializable {
 	private Long id;
 	private String login;
 	private String password;
+	private UserRole userRole;
 
 	public User() {
 	}
@@ -44,6 +47,14 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public UserRole getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(UserRole userRole) {
+		this.userRole = userRole;
 	}
 
 	@Override
