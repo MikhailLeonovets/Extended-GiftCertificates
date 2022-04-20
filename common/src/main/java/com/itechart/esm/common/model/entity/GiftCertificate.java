@@ -1,4 +1,4 @@
-package com.itechart.esm.repository.entity;
+package com.itechart.esm.common.model.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

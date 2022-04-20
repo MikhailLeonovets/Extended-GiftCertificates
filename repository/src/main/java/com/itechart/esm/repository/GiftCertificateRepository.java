@@ -1,6 +1,6 @@
 package com.itechart.esm.repository;
 
-import com.itechart.esm.repository.entity.GiftCertificate;
+import com.itechart.esm.common.model.entity.GiftCertificate;
 
 import java.util.List;
 import java.util.Optional;

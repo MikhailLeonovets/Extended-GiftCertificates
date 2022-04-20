@@ -1,7 +1,7 @@
 package com.itechart.esm.repository.jdbc_template;
 
+import com.itechart.esm.common.model.entity.GiftCertificate;
 import com.itechart.esm.repository.GiftCertificateRepository;
-import com.itechart.esm.repository.entity.GiftCertificate;
 import com.itechart.esm.repository.mapper.GiftCertificateMapper;
 import com.itechart.esm.utilities.converter.PostgresIntervalConverter;
 import org.springframework.beans.factory.annotation.Autowired;

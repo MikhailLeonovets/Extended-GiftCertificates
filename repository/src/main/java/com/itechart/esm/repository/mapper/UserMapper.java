@@ -1,6 +1,6 @@
 package com.itechart.esm.repository.mapper;
 
-import com.itechart.esm.repository.entity.User;
+import com.itechart.esm.common.model.entity.User;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

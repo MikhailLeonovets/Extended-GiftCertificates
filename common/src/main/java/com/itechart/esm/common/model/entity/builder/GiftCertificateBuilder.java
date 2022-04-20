@@ -1,6 +1,6 @@
-package com.itechart.esm.repository.entity.builder;
+package com.itechart.esm.common.model.entity.builder;
 
-import com.itechart.esm.repository.entity.GiftCertificate;
+import com.itechart.esm.common.model.entity.GiftCertificate;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

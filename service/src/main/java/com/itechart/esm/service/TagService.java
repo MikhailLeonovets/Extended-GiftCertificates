@@ -1,6 +1,6 @@
 package com.itechart.esm.service;
 
-import com.itechart.esm.repository.entity.Tag;
+import com.itechart.esm.common.model.entity.Tag;
 import com.itechart.esm.service.exception.DataInputException;
 import com.itechart.esm.service.exception.TagNotFoundException;
 

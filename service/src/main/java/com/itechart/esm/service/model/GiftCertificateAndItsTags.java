@@ -1,7 +1,7 @@
 package com.itechart.esm.service.model;
 
-import com.itechart.esm.repository.entity.GiftCertificate;
-import com.itechart.esm.repository.entity.Tag;
+import com.itechart.esm.common.model.entity.GiftCertificate;
+import com.itechart.esm.common.model.entity.Tag;
 
 import java.io.Serializable;
 import java.util.HashSet;

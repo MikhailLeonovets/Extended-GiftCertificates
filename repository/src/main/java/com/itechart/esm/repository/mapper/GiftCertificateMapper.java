@@ -1,7 +1,7 @@
 package com.itechart.esm.repository.mapper;
 
-import com.itechart.esm.repository.entity.GiftCertificate;
-import com.itechart.esm.repository.entity.builder.GiftCertificateBuilder;
+import com.itechart.esm.common.model.entity.GiftCertificate;
+import com.itechart.esm.common.model.entity.builder.GiftCertificateBuilder;
 import com.itechart.esm.utilities.converter.PostgresIntervalConverter;
 import org.postgresql.util.PGInterval;
 import org.springframework.jdbc.core.RowMapper;

@@ -1,9 +1,9 @@
 package com.itechart.esm.service.impl;
 
+import com.itechart.esm.common.model.entity.GiftCertificate;
+import com.itechart.esm.common.model.entity.GiftCertificateTag;
+import com.itechart.esm.common.model.entity.Tag;
 import com.itechart.esm.repository.GiftCertificateTagRepository;
-import com.itechart.esm.repository.entity.GiftCertificate;
-import com.itechart.esm.repository.entity.GiftCertificateTag;
-import com.itechart.esm.repository.entity.Tag;
 import com.itechart.esm.service.GiftCertificateService;
 import com.itechart.esm.service.GiftCertificateTagService;
 import com.itechart.esm.service.TagService;

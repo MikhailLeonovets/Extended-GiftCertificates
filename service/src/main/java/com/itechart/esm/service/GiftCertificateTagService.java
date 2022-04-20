@@ -1,8 +1,8 @@
 package com.itechart.esm.service;
 
-import com.itechart.esm.repository.entity.GiftCertificate;
-import com.itechart.esm.repository.entity.GiftCertificateTag;
-import com.itechart.esm.repository.entity.Tag;
+import com.itechart.esm.common.model.entity.GiftCertificate;
+import com.itechart.esm.common.model.entity.GiftCertificateTag;
+import com.itechart.esm.common.model.entity.Tag;
 import com.itechart.esm.service.exception.DataInputException;
 import com.itechart.esm.service.exception.GiftCertificateNotFoundException;
 import com.itechart.esm.service.exception.GiftCertificateTagNotFoundException;

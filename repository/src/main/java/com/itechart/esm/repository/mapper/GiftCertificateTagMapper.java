@@ -1,8 +1,8 @@
 package com.itechart.esm.repository.mapper;
 
-import com.itechart.esm.repository.entity.GiftCertificate;
-import com.itechart.esm.repository.entity.GiftCertificateTag;
-import com.itechart.esm.repository.entity.Tag;
+import com.itechart.esm.common.model.entity.GiftCertificate;
+import com.itechart.esm.common.model.entity.GiftCertificateTag;
+import com.itechart.esm.common.model.entity.Tag;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
