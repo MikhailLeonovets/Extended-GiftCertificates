@@ -13,7 +13,9 @@ public interface UserRepository {
 
 	Optional<User> findById(Long id);
 
-	User update(User user);
+	Optional<User> findByLogin(String login);
+
+	boolean update(User user);
 
 	boolean delete(User user);
 
