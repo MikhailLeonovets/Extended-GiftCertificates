@@ -8,14 +8,14 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-@Component
+@Repository
 public class UserSpringJdbcRepository implements UserRepository {
 	private static final String INSERT_QUERY
 			= "INSERT INTO app_user (login, password, role) VALUES (?, ?, ?)";

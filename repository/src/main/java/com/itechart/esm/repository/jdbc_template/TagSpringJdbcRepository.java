@@ -8,14 +8,14 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-@Component
+@Repository
 public class TagSpringJdbcRepository implements TagRepository {
 	private static final String SELECT_ALL_TAG_QUERY
 			= "SELECT * FROM tag";
