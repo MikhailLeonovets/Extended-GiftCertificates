@@ -8,23 +8,28 @@ public class User implements Serializable {
 	private String login;
 	private String password;
 	private String role;
+	private boolean isActive;
 
 	public User() {
+		this.isActive = true;
 	}
 
 	public User(Long id) {
 		this.id = id;
+		this.isActive = true;
 	}
 
 	public User(String login, String password) {
 		this.login = login;
 		this.password = password;
+		this.isActive = true;
 	}
 
 	public User(Long id, String login, String password) {
 		this.id = id;
 		this.login = login;
 		this.password = password;
+		this.isActive = true;
 	}
 
 	public Long getId() {
@@ -57,6 +62,14 @@ public class User implements Serializable {
 
 	public void setUserRole(String role) {
 		this.role = role;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean active) {
+		isActive = active;
 	}
 
 	@Override
