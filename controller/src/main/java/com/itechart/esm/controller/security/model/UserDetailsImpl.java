@@ -13,6 +13,16 @@ public class UserDetailsImpl implements UserDetails {
 	private boolean isActive;
 	private List<SimpleGrantedAuthority> authorities;
 
+	public UserDetailsImpl() {
+	}
+
+	public UserDetailsImpl(String login, String password, boolean isActive, List<SimpleGrantedAuthority> authorities) {
+		this.login = login;
+		this.password = password;
+		this.isActive = isActive;
+		this.authorities = authorities;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return this.authorities;
