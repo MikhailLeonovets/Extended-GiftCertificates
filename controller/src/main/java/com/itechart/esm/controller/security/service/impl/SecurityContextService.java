@@ -1,4 +1,4 @@
-package com.itechart.esm.controller.security.service;
+package com.itechart.esm.controller.security.service.impl;
 
 import com.itechart.esm.common.model.entity.User;
 import com.itechart.esm.service.UserService;

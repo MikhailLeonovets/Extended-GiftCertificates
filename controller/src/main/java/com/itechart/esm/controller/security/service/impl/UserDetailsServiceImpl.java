@@ -1,7 +1,8 @@
-package com.itechart.esm.controller.security.service;
+package com.itechart.esm.controller.security.service.impl;
 
 import com.itechart.esm.common.model.entity.User;
 import com.itechart.esm.controller.security.model.UserDetailsImpl;
+import com.itechart.esm.controller.security.service.enumiration.RoleAuthorityMapper;
 import com.itechart.esm.service.UserService;
 import com.itechart.esm.service.exception.DataInputException;
 import com.itechart.esm.service.exception.UserNotFoundException;

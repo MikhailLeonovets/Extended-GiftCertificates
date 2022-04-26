@@ -1,13 +1,13 @@
 package com.itechart.esm.controller.security.dto;
 
-public class LogInReq {
+public class SignInReq {
 	private String login;
 	private String password;
 
-	public LogInReq() {
+	public SignInReq() {
 	}
 
-	public LogInReq(String login, String password) {
+	public SignInReq(String login, String password) {
 		this.login = login;
 		this.password = password;
 	}

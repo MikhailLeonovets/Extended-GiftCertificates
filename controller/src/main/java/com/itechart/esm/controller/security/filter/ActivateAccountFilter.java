@@ -1,6 +1,6 @@
 package com.itechart.esm.controller.security.filter;
 
-import com.itechart.esm.controller.security.service.SecurityContextService;
+import com.itechart.esm.controller.security.service.impl.SecurityContextService;
 import com.itechart.esm.service.exception.DataInputException;
 import com.itechart.esm.service.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +21,10 @@ import static org.springframework.http.HttpStatus.FORBIDDEN;
 @Component
 public class ActivateAccountFilter extends OncePerRequestFilter {
 	private final SecurityContextService securityContextService;
-	private final AuthenticationManager authenticationManager;
 
 	@Autowired
-	public ActivateAccountFilter(SecurityContextService securityContextService,
-	                             AuthenticationManager authenticationManager) {
+	public ActivateAccountFilter(SecurityContextService securityContextService) {
 		this.securityContextService = securityContextService;
-		this.authenticationManager = authenticationManager;
 	}
 
 	@Override
@@ -39,9 +36,7 @@ public class ActivateAccountFilter extends OncePerRequestFilter {
 				response.setStatus(FORBIDDEN.value());
 			}
 			filterChain.doFilter(request, response);
-		} catch (UserNotFoundException e) {
-			e.printStackTrace();
-		} catch (DataInputException e) {
+		} catch (UserNotFoundException | DataInputException e) {
 			e.printStackTrace();
 		}
 	}
