@@ -1,13 +1,14 @@
 package com.itechart.esm.common.model.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 
 public class User implements Serializable {
 	private Long id;
 	private String login;
 	private String password;
-	private String role;
+	private Collection<Role> role;
 	private boolean isActive;
 
 	public User() {
@@ -56,11 +57,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public String getRole() {
+	public Collection<Role> getRole() {
 		return role;
 	}
 
-	public void setUserRole(String role) {
+	public void setRole(Collection<Role> role) {
 		this.role = role;
 	}
 
@@ -77,12 +78,16 @@ public class User implements Serializable {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		User user = (User) o;
-		return Objects.equals(id, user.id) && login.equals(user.login) && password.equals(user.password);
+		return isActive == user.isActive
+				&& id.equals(user.id)
+				&& login.equals(user.login)
+				&& password.equals(user.password)
+				&& role.equals(user.role);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, login, password);
+		return Objects.hash(id, login, password, role, isActive);
 	}
 
 	@Override
@@ -91,6 +96,8 @@ public class User implements Serializable {
 				"id=" + id +
 				", login='" + login + '\'' +
 				", password='" + password + '\'' +
+				", role=" + role +
+				", isActive=" + isActive +
 				'}';
 	}
 }

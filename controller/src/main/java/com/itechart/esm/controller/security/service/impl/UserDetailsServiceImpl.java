@@ -38,7 +38,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	}
 
 	private List<SimpleGrantedAuthority> getAuthorities(User user) {
-		String role = user.getRole();
+		String role = user.getRole().stream().findFirst().get().getRoleName();
 		List<String> authorities = RoleAuthorityMapper.valueOf(role).getAuthorities();
 		return authorities
 				.stream()

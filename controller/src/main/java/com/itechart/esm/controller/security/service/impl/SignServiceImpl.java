@@ -2,6 +2,7 @@ package com.itechart.esm.controller.security.service.impl;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.itechart.esm.common.model.entity.Role;
 import com.itechart.esm.common.model.entity.User;
 import com.itechart.esm.controller.security.model.UserDetailsImpl;
 import com.itechart.esm.controller.security.service.SignService;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -41,12 +43,12 @@ public class SignServiceImpl implements SignService {
 	}
 
 	@Override
-	public void signIn(User user) throws AuthenticationException {
+	public String signIn(User user) throws AuthenticationException {
 		Authentication authentication;
 		authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getLogin(),
 				user.getPassword()));
 		UserDetailsImpl authenticatedUser = (UserDetailsImpl) authentication.getPrincipal();
-		String accessToken = JWT.create()
+		return JWT.create()
 				.withSubject(authenticatedUser.getUsername())
 				.withExpiresAt(new Date(Long.MAX_VALUE))
 				.withIssuer(ServletUriComponentsBuilder.fromCurrentRequest().toUriString())
@@ -64,7 +66,7 @@ public class SignServiceImpl implements SignService {
 		if (optionalUser.isPresent()) {
 			return false;
 		}
-		user.setUserRole(role);
+		user.setRole(List.of(new Role(role))); //TODO
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userRepository.save(user);
 		return true;

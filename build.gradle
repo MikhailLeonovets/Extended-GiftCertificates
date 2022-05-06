@@ -20,7 +20,6 @@ allprojects {
 	dependencies {
 		implementation 'org.springframework.boot:spring-boot-starter-web'
 		implementation group: 'org.springframework', name: 'spring-context', version: '5.3.19'
-
 		testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	}
 
