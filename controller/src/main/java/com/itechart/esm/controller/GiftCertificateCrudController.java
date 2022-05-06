@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,6 +53,7 @@ public class GiftCertificateCrudController {
 	}
 
 	@GetMapping(value = URL_MAIN_GIFT_CERT_PAGE + URL_GET_ALL_GIFT_CERT, produces = "application/json")
+	@PreAuthorize("SYSTEM_ADMIN")
 	public ResponseEntity<?> getGiftCertificates() throws TagNotFoundException,
 			GiftCertificateNotFoundException, DataInputException {
 		List<GiftCertificateAndItsTags> giftCertificateAndItsTags = giftCertificateManagementService.findAll();
