@@ -35,7 +35,6 @@ import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_UPD
 @RequestMapping
 @PropertySource("classpath:response_msg_success.properties")
 public class GiftCertificateCrudController {
-
 	@Value("${gift_certificate.deleted}")
 	private String giftCertificateDeletedSuccessfully;
 	@Value("${gift_certificate.created}")
@@ -52,8 +51,8 @@ public class GiftCertificateCrudController {
 		this.giftCertificateManagementService = giftCertificateManagementService;
 	}
 
-	@GetMapping(value = URL_MAIN_GIFT_CERT_PAGE + URL_GET_ALL_GIFT_CERT, produces = "application/json")
-	@PreAuthorize("SYSTEM_ADMIN")
+	@GetMapping(value = URL_MAIN_GIFT_CERT_PAGE + URL_GET_ALL_GIFT_CERT)
+	@PreAuthorize("permitAll")
 	public ResponseEntity<?> getGiftCertificates() throws TagNotFoundException,
 			GiftCertificateNotFoundException, DataInputException {
 		List<GiftCertificateAndItsTags> giftCertificateAndItsTags = giftCertificateManagementService.findAll();

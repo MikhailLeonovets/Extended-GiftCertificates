@@ -1,4 +1,4 @@
-package com.itechart.esm.ExtendedGiftCertificate;
+package ExtendedGiftCertificate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

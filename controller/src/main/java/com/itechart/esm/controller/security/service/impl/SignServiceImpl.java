@@ -12,6 +12,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -55,7 +56,7 @@ public class SignServiceImpl implements SignService {
 				.withClaim(USERNAME_CLAIM, authenticatedUser.getUsername())
 				.withClaim(ROLE_CLAIM_STRING,
 						authenticatedUser.getAuthorities().stream()
-								.map(SimpleGrantedAuthority::getAuthority)
+								.map(GrantedAuthority::getAuthority)
 								.collect(Collectors.toList()))
 				.sign(Algorithm.HMAC256(SECRET_CLAIM_KEY_STRING));
 	}
@@ -66,7 +67,7 @@ public class SignServiceImpl implements SignService {
 		if (optionalUser.isPresent()) {
 			return false;
 		}
-		user.setRole(List.of(new Role(role))); //TODO
+		user.setRole(List.of(new Role(role)));
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userRepository.save(user);
 		return true;

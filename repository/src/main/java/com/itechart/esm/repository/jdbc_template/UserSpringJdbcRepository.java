@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Repository
 public class UserSpringJdbcRepository implements UserRepository {
@@ -52,7 +53,7 @@ public class UserSpringJdbcRepository implements UserRepository {
 			int i = 1;
 			preparedStatement.setString(i++, user.getLogin());
 			preparedStatement.setString(i++, user.getPassword());
-			preparedStatement.setString(i++, user.getRole());
+			preparedStatement.setString(i++, user.getRole().stream().collect(Collectors.toList()).get(0).getRoleName());
 			return preparedStatement;
 		}, keyHolder);
 		user.setId(Objects.requireNonNull(keyHolder.getKey()).longValue());

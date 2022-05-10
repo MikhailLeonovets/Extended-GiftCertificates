@@ -7,6 +7,7 @@ import com.itechart.esm.controller.security.dto.UserAuthenticationResp;
 import com.itechart.esm.controller.security.service.SignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +15,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,9 +27,12 @@ import static com.itechart.esm.controller.security.storage.MessageStorage.SIGNED
 import static com.itechart.esm.controller.security.storage.MessageStorage.SIGN_OUT_FAILED_MSG;
 import static com.itechart.esm.controller.security.storage.MessageStorage.SIGN_OUT_SUCCESS_MSG;
 import static com.itechart.esm.controller.security.storage.UrlStorage.SIGN_IN_POST_MAPPING;
+import static com.itechart.esm.controller.security.storage.UrlStorage.SIGN_OUT_MAPPING;
 import static com.itechart.esm.controller.security.storage.UrlStorage.SIGN_UP_POST_MAPPING;
+import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_MAIN_GIFT_CERT_PAGE;
 
 @RestController
+@RequestMapping
 public class AuthorizationController {
 	private final SignService signService;
 
@@ -36,7 +41,7 @@ public class AuthorizationController {
 		this.signService = signService;
 	}
 
-	@PostMapping(SIGN_IN_POST_MAPPING)
+	@PostMapping(URL_MAIN_GIFT_CERT_PAGE + SIGN_IN_POST_MAPPING)
 	public ResponseEntity<?> signIn(@RequestBody SignInReq requestDto) {
 		try {
 			String accessToken = signService.signIn(new User(requestDto.getLogin(), requestDto.getPassword()));
@@ -46,7 +51,7 @@ public class AuthorizationController {
 		}
 	}
 
-	@PostMapping(SIGN_UP_POST_MAPPING)
+	@PostMapping(URL_MAIN_GIFT_CERT_PAGE + SIGN_UP_POST_MAPPING)
 	public ResponseEntity<?> signUp(@RequestBody SignUpReq signUpReq) {
 		User user = new User();
 		user.setLogin(signUpReq.getLogin());
@@ -58,7 +63,7 @@ public class AuthorizationController {
 		return ResponseEntity.badRequest().body(LOGIN_IS_BUSY_MSG);
 	}
 
-	@GetMapping
+	@GetMapping(URL_MAIN_GIFT_CERT_PAGE + SIGN_OUT_MAPPING)
 	public ResponseEntity<?> signOut(HttpServletRequest request, HttpServletResponse response) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication == null) {
