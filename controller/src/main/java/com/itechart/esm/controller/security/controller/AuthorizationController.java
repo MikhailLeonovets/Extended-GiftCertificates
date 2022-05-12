@@ -32,7 +32,7 @@ import static com.itechart.esm.controller.security.storage.UrlStorage.SIGN_UP_PO
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_MAIN_GIFT_CERT_PAGE;
 
 @RestController
-@RequestMapping
+@RequestMapping(URL_MAIN_GIFT_CERT_PAGE)
 public class AuthorizationController {
 	private final SignService signService;
 
@@ -41,7 +41,7 @@ public class AuthorizationController {
 		this.signService = signService;
 	}
 
-	@PostMapping(URL_MAIN_GIFT_CERT_PAGE + SIGN_IN_POST_MAPPING)
+	@PostMapping(SIGN_IN_POST_MAPPING)
 	public ResponseEntity<?> signIn(@RequestBody SignInReq requestDto) {
 		try {
 			String accessToken = signService.signIn(new User(requestDto.getLogin(), requestDto.getPassword()));
@@ -51,7 +51,7 @@ public class AuthorizationController {
 		}
 	}
 
-	@PostMapping(URL_MAIN_GIFT_CERT_PAGE + SIGN_UP_POST_MAPPING)
+	@GetMapping(SIGN_UP_POST_MAPPING)
 	public ResponseEntity<?> signUp(@RequestBody SignUpReq signUpReq) {
 		User user = new User();
 		user.setLogin(signUpReq.getLogin());
@@ -63,7 +63,7 @@ public class AuthorizationController {
 		return ResponseEntity.badRequest().body(LOGIN_IS_BUSY_MSG);
 	}
 
-	@GetMapping(URL_MAIN_GIFT_CERT_PAGE + SIGN_OUT_MAPPING)
+	@GetMapping(SIGN_OUT_MAPPING)
 	public ResponseEntity<?> signOut(HttpServletRequest request, HttpServletResponse response) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication == null) {

@@ -52,7 +52,6 @@ public class GiftCertificateCrudController {
 	}
 
 	@GetMapping(value = URL_MAIN_GIFT_CERT_PAGE + URL_GET_ALL_GIFT_CERT)
-	@PreAuthorize("permitAll")
 	public ResponseEntity<?> getGiftCertificates() throws TagNotFoundException,
 			GiftCertificateNotFoundException, DataInputException {
 		List<GiftCertificateAndItsTags> giftCertificateAndItsTags = giftCertificateManagementService.findAll();
