@@ -51,7 +51,7 @@ public class AuthorizationController {
 		}
 	}
 
-	@GetMapping(SIGN_UP_POST_MAPPING)
+	@PostMapping(SIGN_UP_POST_MAPPING)
 	public ResponseEntity<?> signUp(@RequestBody SignUpReq signUpReq) {
 		User user = new User();
 		user.setLogin(signUpReq.getLogin());
