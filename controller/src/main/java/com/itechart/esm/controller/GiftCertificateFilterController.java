@@ -19,7 +19,7 @@ import java.util.List;
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_GIFT_CERT_BY_TAG_ID_PAGE;
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_MAIN_GIFT_CERT_FILTER_PAGE;
 
-@RestController
+@RestController(URL_MAIN_GIFT_CERT_FILTER_PAGE)
 @RequestMapping
 @PropertySource("classpath:response_msg_success.properties")
 public class GiftCertificateFilterController {
@@ -33,7 +33,7 @@ public class GiftCertificateFilterController {
 		this.giftCertificateManagementService = giftCertificateManagementService;
 	}
 
-	@GetMapping(URL_MAIN_GIFT_CERT_FILTER_PAGE + URL_GIFT_CERT_BY_TAG_ID_PAGE)
+	@GetMapping(URL_GIFT_CERT_BY_TAG_ID_PAGE)
 	public ResponseEntity<?> getGiftCertificateByTag(@PathVariable Long id) throws TagNotFoundException,
 			GiftCertificateNotFoundException, DataInputException {
 		List<GiftCertificateAndItsTags> giftCertificateAndItsTags = giftCertificateManagementService.findByTag(id);

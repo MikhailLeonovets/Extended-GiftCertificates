@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,10 +27,11 @@ import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_GET
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_GET_BY_ID_GIFT_CERT;
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_GIFT_CERT_SORT_DATE;
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_GIFT_CERT_SORT_NAME;
+import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_MAIN_GIFT_CERT_FILTER_PAGE;
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_MAIN_GIFT_CERT_PAGE;
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_UPDATE_GIFT_CERT;
 
-@RestController
+@RestController(URL_MAIN_GIFT_CERT_FILTER_PAGE)
 @RequestMapping
 @PropertySource("classpath:response_msg_success.properties")
 public class GiftCertificateCrudController {
@@ -51,7 +51,7 @@ public class GiftCertificateCrudController {
 		this.giftCertificateManagementService = giftCertificateManagementService;
 	}
 
-	@GetMapping(value = URL_MAIN_GIFT_CERT_PAGE + URL_GET_ALL_GIFT_CERT)
+	@GetMapping(URL_GET_ALL_GIFT_CERT)
 	public ResponseEntity<?> getGiftCertificates() throws TagNotFoundException,
 			GiftCertificateNotFoundException, DataInputException {
 		List<GiftCertificateAndItsTags> giftCertificateAndItsTags = giftCertificateManagementService.findAll();
@@ -61,27 +61,27 @@ public class GiftCertificateCrudController {
 		return ResponseEntity.ok(giftCertificateManagementService.findAll());
 	}
 
-	@GetMapping(URL_MAIN_GIFT_CERT_PAGE + URL_GET_BY_ID_GIFT_CERT)
+	@GetMapping(URL_GET_BY_ID_GIFT_CERT)
 	public ResponseEntity<?> getGiftCertificate(@PathVariable Long id) throws GiftCertificateNotFoundException,
 			TagNotFoundException, DataInputException {
 		return ResponseEntity.ok(giftCertificateManagementService.findByGiftCertificateId(id));
 	}
 
-	@DeleteMapping(URL_MAIN_GIFT_CERT_PAGE + URL_DELETE_GIFT_CERT)
+	@DeleteMapping(URL_DELETE_GIFT_CERT)
 	public ResponseEntity<?> deleteById(@PathVariable Long id) throws GiftCertificateNotFoundException,
 			DataInputException {
 		giftCertificateManagementService.deleteById(id);
 		return ResponseEntity.ok(giftCertificateDeletedSuccessfully);
 	}
 
-	@PostMapping(URL_MAIN_GIFT_CERT_PAGE + URL_CREATE_GIFT_CERT)
+	@PostMapping(URL_CREATE_GIFT_CERT)
 	public ResponseEntity<?> createGiftCertificate(@RequestBody GiftCertificateAndItsTags giftCertificateAndItsTags)
 			throws DataInputException {
 		giftCertificateManagementService.createGiftCertificate(giftCertificateAndItsTags);
 		return ResponseEntity.ok(giftCertificateCreatedSuccessfully);
 	}
 
-	@PutMapping(URL_MAIN_GIFT_CERT_PAGE + URL_UPDATE_GIFT_CERT)
+	@PutMapping(URL_UPDATE_GIFT_CERT)
 	public ResponseEntity<?> updateGiftCertificate(@RequestBody GiftCertificateAndItsTags giftCertificateAndItsTags,
 	                                               @PathVariable String id)
 			throws GiftCertificateNotFoundException, TagNotFoundException, GiftCertificateTagNotFoundException,
@@ -90,7 +90,7 @@ public class GiftCertificateCrudController {
 		return ResponseEntity.ok(giftCertificateUpdatedSuccessfully);
 	}
 
-	@GetMapping(URL_MAIN_GIFT_CERT_PAGE + URL_GIFT_CERT_SORT_DATE)
+	@GetMapping(URL_GIFT_CERT_SORT_DATE)
 	public ResponseEntity<?> getGiftCertificatesSortByDate()
 			throws TagNotFoundException, GiftCertificateNotFoundException, DataInputException {
 		List<GiftCertificateAndItsTags> giftCertificateAndItsTagsList =
@@ -101,7 +101,7 @@ public class GiftCertificateCrudController {
 		return ResponseEntity.ok(giftCertificateAndItsTagsList);
 	}
 
-	@GetMapping(URL_MAIN_GIFT_CERT_PAGE + URL_GIFT_CERT_SORT_NAME)
+	@GetMapping(URL_GIFT_CERT_SORT_NAME)
 	public ResponseEntity<?> getGiftCertificatesSortByName()
 			throws TagNotFoundException, GiftCertificateNotFoundException, DataInputException {
 		List<GiftCertificateAndItsTags> giftCertificateAndItsTags =

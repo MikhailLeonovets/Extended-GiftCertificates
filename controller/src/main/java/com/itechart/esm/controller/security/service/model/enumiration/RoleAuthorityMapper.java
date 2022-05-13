@@ -1,8 +1,10 @@
-package com.itechart.esm.controller.security.service.enumiration;
+package com.itechart.esm.controller.security.service.model.enumiration;
 
 import java.util.List;
 
-import static com.itechart.esm.controller.security.service.enumiration.Authority.*;
+import static com.itechart.esm.controller.security.service.model.enumiration.Authority.GUEST_AUTHORITY;
+import static com.itechart.esm.controller.security.service.model.enumiration.Authority.SYSTEM_ADMIN;
+import static com.itechart.esm.controller.security.service.model.enumiration.Authority.USER_AUTHORITY;
 
 public enum RoleAuthorityMapper {
 	ADMIN(List.of(

@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_MAIN_GIFT_CERT_FILTER_PAGE;
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_MAIN_SEARCH_GIFT_CERT_PAGE;
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_SEARCH_BY_PART_OF_DESCRIPTION;
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_SEARCH_BY_PART_OF_NAME;
 
 @RequestMapping
-@RestController
+@RestController(URL_MAIN_GIFT_CERT_FILTER_PAGE)
 @PropertySource("classpath:response_msg_success.properties")
 public class GiftCertificateSearchController {
 	@Value("${gift_certificate.empty.by.name}")
@@ -36,7 +37,7 @@ public class GiftCertificateSearchController {
 		this.giftCertificateManagementService = giftCertificateManagementService;
 	}
 
-	@GetMapping(URL_MAIN_SEARCH_GIFT_CERT_PAGE + URL_SEARCH_BY_PART_OF_NAME)
+	@GetMapping(URL_SEARCH_BY_PART_OF_NAME)
 	public ResponseEntity<?> getGiftCertificatesByPartOfName(@PathVariable String name)
 			throws TagNotFoundException, GiftCertificateNotFoundException, DataInputException {
 		List<GiftCertificateAndItsTags> giftCertificateAndItsTagsList =
@@ -47,7 +48,7 @@ public class GiftCertificateSearchController {
 		return ResponseEntity.ok(giftCertificateAndItsTagsList);
 	}
 
-	@GetMapping(URL_MAIN_SEARCH_GIFT_CERT_PAGE + URL_SEARCH_BY_PART_OF_DESCRIPTION)
+	@GetMapping(URL_SEARCH_BY_PART_OF_DESCRIPTION)
 	public ResponseEntity<?> getGiftCertificatesByPartOfDescription(@PathVariable String description)
 			throws TagNotFoundException, GiftCertificateNotFoundException, DataInputException {
 		List<GiftCertificateAndItsTags> giftCertificateAndItsTagsList =

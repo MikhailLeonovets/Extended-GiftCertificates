@@ -7,7 +7,7 @@ dependencies {
     implementation group: 'org.springframework.security.oauth.boot', name: 'spring-security-oauth2-autoconfigure', version: '2.6.7'
     implementation group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.1.1.RELEASE'
     implementation 'com.auth0:java-jwt:3.19.2'
-    implementation 'com.okta.spring:okta-spring-boot-starter:2.1.5'
+    implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 
     testImplementation 'org.springframework.security:spring-security-test'
 

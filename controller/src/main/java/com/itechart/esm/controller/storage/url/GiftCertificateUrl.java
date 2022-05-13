@@ -2,6 +2,7 @@ package com.itechart.esm.controller.storage.url;
 
 public class GiftCertificateUrl {
 	public static final String URL_MAIN_GIFT_CERT_PAGE = "/gift-certificate";
+	public static final String URL_MAIN_AUTH_PAGE = "/auth";
 	public static final String URL_GET_ALL_GIFT_CERT = "";
 	public static final String URL_GET_BY_ID_GIFT_CERT = "/{id}";
 	public static final String URL_DELETE_GIFT_CERT = "/{id}";
@@ -16,4 +17,8 @@ public class GiftCertificateUrl {
 	public static final String URL_MAIN_SEARCH_GIFT_CERT_PAGE = "/gift-certificate/search";
 	public static final String URL_SEARCH_BY_PART_OF_NAME = "/name/{name}";
 	public static final String URL_SEARCH_BY_PART_OF_DESCRIPTION = "/description/{description}";
+
+	public static final String URL_SIGN_IN = "/sign-in";
+	public static final String URL_SIGN_UP = "/sign-up";
+	public static final String URL_SIGN_OUT = "/sign-out";
 }

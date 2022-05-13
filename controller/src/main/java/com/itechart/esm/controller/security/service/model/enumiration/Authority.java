@@ -1,4 +1,4 @@
-package com.itechart.esm.controller.security.service.enumiration;
+package com.itechart.esm.controller.security.service.model.enumiration;
 
 public class Authority {
 	public static final String GUEST_AUTHORITY = "guest";
