@@ -16,6 +16,8 @@ public interface UserService {
 
 	User findByLogin(String login) throws UserNotFoundException, DataInputException;
 
+	boolean isLoginBusy(String login) throws DataInputException;
+
 	boolean update(User user) throws DataInputException, UserNotFoundException;
 
 	boolean delete(User user) throws UserNotFoundException, DataInputException;

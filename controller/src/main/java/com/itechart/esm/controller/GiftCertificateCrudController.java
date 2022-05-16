@@ -27,12 +27,11 @@ import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_GET
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_GET_BY_ID_GIFT_CERT;
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_GIFT_CERT_SORT_DATE;
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_GIFT_CERT_SORT_NAME;
-import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_MAIN_GIFT_CERT_FILTER_PAGE;
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_MAIN_GIFT_CERT_PAGE;
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_UPDATE_GIFT_CERT;
 
-@RestController(URL_MAIN_GIFT_CERT_FILTER_PAGE)
-@RequestMapping
+@RestController
+@RequestMapping(URL_MAIN_GIFT_CERT_PAGE)
 @PropertySource("classpath:response_msg_success.properties")
 public class GiftCertificateCrudController {
 	@Value("${gift_certificate.deleted}")

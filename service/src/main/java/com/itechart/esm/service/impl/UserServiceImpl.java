@@ -58,6 +58,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public boolean isLoginBusy(String login) throws DataInputException {
+		if (login == null || login.isEmpty()) {
+			throw new DataInputException();
+		}
+		return userRepository.findByLogin(login)
+				.isPresent();
+	}
+
+	@Override
 	public boolean update(User user) throws DataInputException, UserNotFoundException {
 		if (user == null || user.getId() == null) {
 			throw new DataInputException();

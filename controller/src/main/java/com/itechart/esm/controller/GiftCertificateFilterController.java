@@ -18,9 +18,10 @@ import java.util.List;
 
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_GIFT_CERT_BY_TAG_ID_PAGE;
 import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_MAIN_GIFT_CERT_FILTER_PAGE;
+import static com.itechart.esm.controller.storage.url.GiftCertificateUrl.URL_MAIN_GIFT_CERT_PAGE;
 
-@RestController(URL_MAIN_GIFT_CERT_FILTER_PAGE)
-@RequestMapping
+@RestController
+@RequestMapping(URL_MAIN_GIFT_CERT_PAGE)
 @PropertySource("classpath:response_msg_success.properties")
 public class GiftCertificateFilterController {
 	@Value("${gift_certificate.empty.by.tag}")
